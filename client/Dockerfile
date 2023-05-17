@@ -11,6 +11,7 @@ RUN pnpm install
 
 
 FROM base as builder
+ENV VITE_API_URL=${VITE_API_URL}
 WORKDIR /app
 COPY --from=dev-deps /app/node_modules ./node_modules
 COPY . .
