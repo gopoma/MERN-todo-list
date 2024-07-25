@@ -14,7 +14,7 @@ const initialTodoFormState: TodoFormState = {
 
 export const TodoForm: FC = () => {
   const {
-    title, description,
+    title,
     formState,
     onInputChange,
     onResetForm
@@ -24,7 +24,7 @@ export const TodoForm: FC = () => {
   const onSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
 
-    if (title.trim() === '' || description.trim() === '') return
+    if (title.trim() === '') return
 
     onResetForm()
 
@@ -43,16 +43,6 @@ export const TodoForm: FC = () => {
           name='title'
           value={ title }
           placeholder='Enter a title...'
-          onChange={ onInputChange }
-          className='w-full px-3 py-2 text-xl rounded'
-        />
-      </div>
-      <div className='flex gap-4 items-center'>
-        <label className='min-w-[18%] text-xl font-bold'>description:</label>
-        <input
-          name='description'
-          value={ description }
-          placeholder='Enter a description...'
           onChange={ onInputChange }
           className='w-full px-3 py-2 text-xl rounded'
         />

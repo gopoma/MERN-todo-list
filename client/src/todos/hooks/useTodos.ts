@@ -83,6 +83,16 @@ export const useTodos = () => {
     }
   }
 
+  const startEditingTodo = async (idTodo: number, todo: Partial<Todo>): Promise<void> => {
+    try {
+      const { data: { todo: editedTodo } } = await todosServ.edit(idTodo, todo)
+      onEditTodo(editedTodo)
+    } catch (error) {
+      console.log('[Error] Editing Todo')
+      console.log(error)
+    }
+  }
+
   return {
     todos,
     selectedTodos,
@@ -92,6 +102,7 @@ export const useTodos = () => {
     startSavingTodo,
     startRotatingTodoStatus,
     startTogglingTodo,
-    startDeletingSelectedTodos
+    startDeletingSelectedTodos,
+    startEditingTodo
   }
 }
